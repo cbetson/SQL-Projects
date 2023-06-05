@@ -1,1 +1,107 @@
+SELECT * FROM [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date;
+
+SELECT COUNT(Gm) AS 'TOTAL GAMES',COUNT(CASE
+            WHEN W_L != 'L'
+                THEN 1
+            END) AS 'WINS'
+    ,COUNT(CASE
+            WHEN W_L = 'L'
+                THEN 1
+            END) AS 'LOSES'
+			FROM [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date;
+(OUTPUT: TOTAL GAMES: 77, WINS: 46, LOSES: 31)
+
+SELECT AVG([NYC Weather Data 2014-2015].actual_mean_temp) AS AVERAGE_TEMP from [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date
+WHERE Gm IS NOT NULL;
+(OUTPUT: AVERAGE_TEMP = 69)
+
+SELECT COUNT(Gm) AS 'TOTAL GAMES',COUNT(CASE
+            WHEN W_L != 'L'
+                THEN 1
+            END) AS 'WINS'
+    ,COUNT(CASE
+            WHEN W_L = 'L'
+                THEN 1
+            END) AS 'LOSES'
+			FROM [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date
+WHERE actual_mean_temp < 69;
+(OUTPUT: TOTAL GAMES: 28, WINS: 15, LOSES: 13)
+
+SELECT COUNT(Gm) AS 'TOTAL GAMES',COUNT(CASE
+            WHEN W_L != 'L'
+                THEN 1
+            END) AS 'WINS'
+    ,COUNT(CASE
+            WHEN W_L = 'L'
+                THEN 1
+            END) AS 'LOSES'
+			FROM [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date
+WHERE actual_mean_temp > 69;
+(OUTPUT: TOTAL GAMES: 47, WINS: 30, LOSES: 17)
+
+SELECT COUNT(Gm) AS 'TOTAL GAMES',COUNT(CASE
+            WHEN W_L != 'L'
+                THEN 1
+            END) AS 'WINS'
+    ,COUNT(CASE
+            WHEN W_L = 'L'
+                THEN 1
+            END) AS 'LOSES'
+			FROM [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date
+WHERE actual_precipitation > 0
+(OUTPUT: TOTAL GAMES: 16, WINS: 11, LOSES: 5)
+
+SELECT COUNT(Gm) AS 'TOTAL GAMES',COUNT(CASE
+            WHEN W_L != 'L'
+                THEN 1
+            END) AS 'WINS'
+    ,COUNT(CASE
+            WHEN W_L = 'L'
+                THEN 1
+            END) AS 'LOSES'
+			FROM [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date
+WHERE actual_precipitation = 0
+(OUTPUT: TOTAL GAMES: 61, WINS: 35, LOSES: 26)
+
+SELECT COUNT(Gm) AS 'TOTAL GAMES',COUNT(CASE
+            WHEN W_L != 'L'
+                THEN 1
+            END) AS 'WINS'
+    ,COUNT(CASE
+            WHEN W_L = 'L'
+                THEN 1
+            END) AS 'LOSES'
+			FROM [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date
+WHERE D_N = 'D'
+(OUTPUT: TOTAL GAMES: 30, WINS: 14, LOSES: 16)
+
+SELECT COUNT(Gm) AS 'TOTAL GAMES',COUNT(CASE
+            WHEN W_L != 'L'
+                THEN 1
+            END) AS 'WINS'
+    ,COUNT(CASE
+            WHEN W_L = 'L'
+                THEN 1
+            END) AS 'LOSES'
+			FROM [NYY DATA]
+RIGHT JOIN [NYC Weather Data 2014-2015]
+ON [NYY DATA].Date=[NYC Weather Data 2014-2015].date
+WHERE D_N = 'N'
+(OUTPUT: TOTAL GAMES: 47, WINS: 32, LOSES: 15)
 
